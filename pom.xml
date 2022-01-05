@@ -46,12 +46,17 @@
 
         <com.google.elemental2.dom>1.1.0</com.google.elemental2.dom>
 
+        <auto.common.version>1.2.1</auto.common.version>
+        <auto.service.version>1.0.1</auto.service.version>
+        <commons.io.version>2.11.0</commons.io.version>
+
         <junit.version>4.13.2</junit.version>
 
     </properties>
 
     <modules>
         <module>api</module>
+        <module>processor</module>
     </modules>
 
     <dependencyManagement>
@@ -61,8 +66,21 @@
                 <artifactId>elemental2-dom</artifactId>
                 <version>${com.google.elemental2.dom}</version>
             </dependency>
-
-
+            <dependency>
+                <groupId>com.google.auto</groupId>
+                <artifactId>auto-common</artifactId>
+                <version>${auto.common.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.auto.service</groupId>
+                <artifactId>auto-service</artifactId>
+                <version>${auto.service.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-io</groupId>
+                <artifactId>commons-io</artifactId>
+                <version>${commons.io.version}</version>
+            </dependency>
             <dependency>
                 <groupId>junit</groupId>
                 <artifactId>junit</artifactId>
