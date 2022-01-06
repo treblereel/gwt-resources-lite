@@ -20,10 +20,8 @@ import java.io.IOException;
 import java.io.OutputStream;
 import javax.lang.model.element.TypeElement;
 import org.treblereel.gwt.resources.ext.GeneratorContext;
-import org.treblereel.gwt.resources.ext.PropertyOracle;
 import org.treblereel.gwt.resources.ext.TreeLogger;
 import org.treblereel.gwt.resources.ext.UnableToCompleteException;
-import org.treblereel.gwt.resources.rg.resource.ConfigurationProperties;
 import org.treblereel.gwt.resources.rg.util.Util;
 
 /** @author Dmitrii Tikhomirov Created by treblereel 11/11/18 */
@@ -42,14 +40,9 @@ class StaticResourceContext extends AbstractResourceContext {
       throws UnableToCompleteException {
     TreeLogger logger = getLogger();
     GeneratorContext context = getGeneratorContext();
-    PropertyOracle oracle = context.getPropertyOracle();
 
     // See if filename obfuscation should be enabled
-    boolean enableRenaming =
-        oracle
-            .getConfigurationProperty(
-                logger, ConfigurationProperties.KEY_CLIENT_BUNDLE_ENABLE_RENAMING)
-            .asSingleBooleanValue();
+    boolean enableRenaming = true;
 
     // Determine the final filename for the resource's file
     String outputName;

@@ -25,6 +25,10 @@ import javax.annotation.processing.SupportedAnnotationTypes;
 import javax.annotation.processing.SupportedSourceVersion;
 import javax.lang.model.SourceVersion;
 import javax.lang.model.element.TypeElement;
+import org.treblereel.gwt.resources.context.AptContext;
+import org.treblereel.gwt.resources.ext.TreeLogger;
+import org.treblereel.gwt.resources.ext.UnableToCompleteException;
+import org.treblereel.gwt.resources.logger.PrintWriterTreeLogger;
 
 /** @author Dmitrii Tikhomirov Created by treblereel on 9/30/18. */
 @AutoService(Processor.class)
@@ -39,15 +43,20 @@ public class ClientBundleAnnotationProcessor extends AbstractProcessor {
       return false;
     }
 
-    /*    AptContext context = new AptContext(processingEnv, roundEnvironment);
-    TreeLogger logger = new PrintWriterTreeLogger();
-    ((PrintWriterTreeLogger) logger).setMaxDetail(TreeLogger.Type.INFO);
-    Set<TypeElement> elements = context.getClassesWithAnnotation(Resource.class);
+    AptContext context = new AptContext(processingEnv, roundEnvironment);
+    PrintWriterTreeLogger logger = new PrintWriterTreeLogger();
+    logger.setMaxDetail(TreeLogger.Type.INFO);
+
+    Set<TypeElement> annotatedElements =
+        (Set<TypeElement>)
+            roundEnvironment.getElementsAnnotatedWith(
+                org.treblereel.gwt.resources.api.client.Resource.class);
+
     try {
-      new ClientBundleClassBuilder(logger, context, elements).process();
+      new ClientBundleClassBuilder(logger, context, annotatedElements).process();
     } catch (UnableToCompleteException e) {
       throw new Error(e);
-    }*/
+    }
     return true;
   }
 }
