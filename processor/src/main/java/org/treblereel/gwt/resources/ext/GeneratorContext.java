@@ -44,12 +44,6 @@ public interface GeneratorContext {
   void commitResource(TreeLogger logger, OutputStream os) throws UnableToCompleteException;
 
   /**
-   * Gets the property oracle for the current generator context. Generators can use the property
-   * oracle to query deferred binding properties.
-   */
-  PropertyOracle getPropertyOracle();
-
-  /**
    * Returns a resource oracle containing all resources that are mapped into the module's source (or
    * super-source) paths. Conceptually, this resource oracle exposes resources which are "siblings"
    * to GWT-compatible Java classes. For example, if the module includes <code>

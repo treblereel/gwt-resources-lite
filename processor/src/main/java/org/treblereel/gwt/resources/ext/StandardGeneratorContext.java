@@ -20,7 +20,6 @@ import java.io.*;
 import java.util.*;
 import javax.tools.JavaFileObject;
 import org.treblereel.gwt.resources.context.AptContext;
-import org.treblereel.gwt.resources.rg.resource.impl.PropertyOracleImpl;
 import org.treblereel.gwt.resources.rg.resource.impl.ResourceOracleImpl;
 import org.treblereel.gwt.resources.rg.util.DiskCache;
 import org.treblereel.gwt.resources.rg.util.GeneratedUnit;
@@ -36,12 +35,10 @@ public class StandardGeneratorContext implements GeneratorContext {
   private final Map<String, GeneratedUnit> committedGeneratedCups = new HashMap<>();
   private final Set<String> newlyGeneratedTypeNames = new HashSet<>();
   private final ResourceOracle resourceOracle;
-  private final PropertyOracle propertyOracle;
 
   public StandardGeneratorContext(AptContext aptContext) {
     this.aptContext = aptContext;
     this.resourceOracle = new ResourceOracleImpl(aptContext);
-    this.propertyOracle = new PropertyOracleImpl(aptContext);
   }
 
   @Override
@@ -77,11 +74,6 @@ public class StandardGeneratorContext implements GeneratorContext {
       logger.log(TreeLogger.WARN, "Generator attempted to commit an unknown OutputStream", null);
       throw new UnableToCompleteException();
     }
-  }
-
-  @Override
-  public PropertyOracle getPropertyOracle() {
-    return propertyOracle;
   }
 
   @Override
