@@ -49,13 +49,6 @@ public interface ImageResource extends ResourcePrototype {
     int height() default -1;
 
     /**
-     * Set to {@code true} to require the ImageResource to be downloaded as a separate resource at
-     * runtime. Specifically, this will disable the use of {@code data:} URLs or other bundling
-     * optimizations for the image. This can be used for infrequently-displayed images.
-     */
-    boolean preventInlining() default false;
-
-    /**
      * Set to a positive value to override the image's intrinsic width. The image bundling code will
      * scale the image to the desired width. If only one of <code>width</code> or <code>height
      * </code> are set, the aspect ratio of the image will be maintained.

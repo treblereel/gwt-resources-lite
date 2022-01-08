@@ -18,6 +18,7 @@ package org.treblereel.gwt.resources.ext;
 
 import java.io.*;
 import java.util.*;
+import javax.annotation.processing.FilerException;
 import javax.tools.JavaFileObject;
 import org.treblereel.gwt.resources.context.AptContext;
 import org.treblereel.gwt.resources.rg.resource.impl.ResourceOracleImpl;
@@ -119,7 +120,8 @@ public class StandardGeneratorContext implements GeneratorContext {
               super.flush();
             }
           };
-
+    } catch (FilerException filerException) {
+      pw = null;
     } catch (IOException e) {
       logger.log(TreeLogger.Type.ERROR, "Unable to create a Class : " + e.getMessage());
       throw new UnableToCompleteException();

@@ -32,10 +32,12 @@ import javax.lang.model.util.Elements;
 import javax.lang.model.util.Types;
 import org.treblereel.gwt.resources.api.client.ClientBundle;
 import org.treblereel.gwt.resources.api.client.DataResource;
+import org.treblereel.gwt.resources.api.client.ImageResource;
 import org.treblereel.gwt.resources.api.client.TextResource;
 import org.treblereel.gwt.resources.ext.ResourceGenerator;
 import org.treblereel.gwt.resources.rg.BundleResourceGenerator;
 import org.treblereel.gwt.resources.rg.DataResourceGenerator;
+import org.treblereel.gwt.resources.rg.ImageResourceGenerator;
 import org.treblereel.gwt.resources.rg.TextResourceGenerator;
 
 /** @author Dmitrii Tikhomirov <chani.liet@gmail.com> Created by treblereel on 10/26/18. */
@@ -82,9 +84,9 @@ public class AptContext {
     generators.put(
         elements.getTypeElement(DataResource.class.getCanonicalName()),
         DataResourceGenerator.class);
-    /* generators.put(
-    elements.getTypeElement(ImageResource.class.getCanonicalName()),
-    ImageResourceGenerator.class);*/
+    generators.put(
+        elements.getTypeElement(ImageResource.class.getCanonicalName()),
+        ImageResourceGenerator.class);
     generators.put(
         elements.getTypeElement(TextResource.class.getCanonicalName()),
         TextResourceGenerator.class);
