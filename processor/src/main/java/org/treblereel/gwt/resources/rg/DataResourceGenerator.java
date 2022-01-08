@@ -15,11 +15,14 @@
  */
 package org.treblereel.gwt.resources.rg;
 
+import java.net.URL;
 import javax.lang.model.element.ExecutableElement;
-import org.treblereel.gwt.resources.ext.AbstractResourceGenerator;
-import org.treblereel.gwt.resources.ext.ResourceContext;
-import org.treblereel.gwt.resources.ext.TreeLogger;
-import org.treblereel.gwt.resources.ext.UnableToCompleteException;
+import org.treblereel.gwt.resources.api.client.DataResource;
+import org.treblereel.gwt.resources.api.client.impl.DataResourcePrototype;
+import org.treblereel.gwt.resources.api.client.utils.UriUtils;
+import org.treblereel.gwt.resources.ext.*;
+import org.treblereel.gwt.resources.rg.util.SourceWriter;
+import org.treblereel.gwt.resources.rg.util.StringSourceWriter;
 
 /** Provides implementations of DataResource. */
 public final class DataResourceGenerator extends AbstractResourceGenerator {
@@ -27,8 +30,7 @@ public final class DataResourceGenerator extends AbstractResourceGenerator {
   public String createAssignment(
       TreeLogger logger, ResourceContext context, ExecutableElement method, String locale)
       throws UnableToCompleteException {
-    throw new Error(" DataResource is not implemented");
-    /*    ResourceOracle resourceOracle = context.getGeneratorContext().getResourcesOracle();
+    ResourceOracle resourceOracle = context.getGeneratorContext().getResourcesOracle();
     URL[] resources = resourceOracle.findResources(logger, method, locale);
 
     if (resources.length != 1) {
@@ -44,7 +46,7 @@ public final class DataResourceGenerator extends AbstractResourceGenerator {
     boolean forceExternal = false;
 
     URL resource = resources[0];
-    String outputUrlExpression = context.deploy(resource, mimeType, forceExternal);
+    String outputUrlExpression = context.deploy(resource, mimeType, false);
 
     SourceWriter sw = new StringSourceWriter();
     // Convenience when examining the generated code.
@@ -59,6 +61,6 @@ public final class DataResourceGenerator extends AbstractResourceGenerator {
     sw.outdent();
     sw.print(")");
 
-    return sw.toString();*/
+    return sw.toString();
   }
 }
