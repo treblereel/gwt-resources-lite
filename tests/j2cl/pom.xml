@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <artifactId>resources-test-parent</artifactId>
+        <groupId>org.treblereel.gwt.resources.test</groupId>
+        <version>dev</version>
+    </parent>
+
+    <artifactId>j2cl</artifactId>
+    <version>dev</version>
+    <description>J2CL tests</description>
+
+    <developers>
+        <developer>
+            <id>treblereel</id>
+            <name>Dmitrii Tikhomirov</name>
+            <email>chani.liet@gmail.com</email>
+        </developer>
+    </developers>
+
+    <properties>
+        <j2cl.version>0.9-SNAPSHOT</j2cl.version>
+        <maven.j2cl.plugin>0.17-SNAPSHOT</maven.j2cl.plugin>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.treblereel.gwt.resources</groupId>
+            <artifactId>resources-api</artifactId>
+            <version>${revision}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.vertispan.j2cl</groupId>
+            <artifactId>junit-annotations</artifactId>
+            <version>${j2cl.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.vertispan.j2cl</groupId>
+            <artifactId>gwttestcase-emul</artifactId>
+            <version>${j2cl.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.vertispan.j2cl</groupId>
+            <artifactId>junit-emul</artifactId>
+            <version>${j2cl.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+            </resource>
+        </resources>
+        <testResources>
+            <testResource>
+                <directory>${project.basedir}/src/test/java</directory>
+            </testResource>
+            <testResource>
+                <directory>${project.basedir}/src/test/resources</directory>
+            </testResource>
+        </testResources>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven.compiler.version}</version>
+                <configuration>
+                    <source>${maven.compiler.source}</source>
+                    <target>${maven.compiler.target}</target>
+                    <annotationProcessorPaths>
+                        <path>
+                            <groupId>org.treblereel.gwt.resources</groupId>
+                            <artifactId>resources-processor</artifactId>
+                            <version>${revision}</version>
+                        </path>
+                    </annotationProcessorPaths>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <skipTests>true</skipTests>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>com.vertispan.j2cl</groupId>
+                <artifactId>j2cl-maven-plugin</artifactId>
+                <version>${maven.j2cl.plugin}</version>
+                <executions>
+                    <execution>
+                        <id>j2cl-test</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>test</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <compilationLevel>ADVANCED</compilationLevel>
+                    <defines>
+                        <gwt.enableDebugId>true</gwt.enableDebugId>
+                        <gwt.cspCompatModeEnabled>true</gwt.cspCompatModeEnabled>
+                        <gwt.cspCompatModeEnabled>true</gwt.cspCompatModeEnabled>
+                        <gwt.strictCspTestingEnabled>true</gwt.strictCspTestingEnabled>
+                    </defines>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>vertispan-releases</id>
+            <name>Vertispan hosted artifacts-releases</name>
+            <url>https://repo.vertispan.com/j2cl/</url>
+        </pluginRepository>
+    </pluginRepositories>
+
+</project>
