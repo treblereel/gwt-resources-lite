@@ -31,6 +31,7 @@
 
     <modules>
         <module>jre</module>
+        <module>j2cl</module>
     </modules>
 
     <build>
