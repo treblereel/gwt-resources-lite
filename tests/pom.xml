@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.treblereel.gwt.resources</groupId>
+        <artifactId>resources-parent</artifactId>
+        <version>dev</version>
+    </parent>
+
+    <artifactId>resources-test-parent</artifactId>
+    <groupId>org.treblereel.gwt.resources.test</groupId>
+    <description>test parent for gwt-resources-lite</description>
+    <version>dev</version>
+    <packaging>pom</packaging>
+
+    <organization>
+        <name>Treblereel</name>
+        <url>https://github.com/treblereel</url>
+    </organization>
+
+    <developers>
+        <developer>
+            <id>treblereel</id>
+            <name>Dmitrii Tikhomirov</name>
+            <email>chani.liet@gmail.com</email>
+        </developer>
+    </developers>
+
+    <modules>
+        <module>jre</module>
+    </modules>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>

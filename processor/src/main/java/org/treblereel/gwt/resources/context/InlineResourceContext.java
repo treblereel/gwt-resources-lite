@@ -22,7 +22,7 @@ import org.treblereel.gwt.resources.ext.TreeLogger;
 import org.treblereel.gwt.resources.ext.UnableToCompleteException;
 
 /** @author Dmitrii Tikhomirov Created by treblereel 11/11/18 */
-class InlineResourceContext extends StaticResourceContext {
+class InlineResourceContext extends AbstractResourceContext {
   /** String constants in Java have a maximum limit that we must obey. */
   public static final int MAX_ENCODED_SIZE = (2 << 15) - 1;
 
@@ -60,7 +60,7 @@ class InlineResourceContext extends StaticResourceContext {
       }
     }
 
-    return super.deploy(suggestedFileName, mimeType, data, true);
+    throw new Error("Max file " + suggestedFileName + " size exceeded " + MAX_ENCODED_SIZE);
   }
 
   @Override
