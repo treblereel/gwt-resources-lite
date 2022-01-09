@@ -32,6 +32,7 @@
     <modules>
         <module>jre</module>
         <module>j2cl</module>
+        <module>gwt</module>
     </modules>
 
     <build>
