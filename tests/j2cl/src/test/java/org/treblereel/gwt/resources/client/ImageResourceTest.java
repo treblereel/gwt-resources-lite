@@ -15,9 +15,12 @@
  */
 package org.treblereel.gwt.resources.client;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 import static org.treblereel.gwt.resources.api.client.ImageResource.*;
 
 import com.google.j2cl.junit.apt.J2clTestInput;
+import org.junit.Test;
 import org.treblereel.gwt.resources.api.client.ClientBundle;
 import org.treblereel.gwt.resources.api.client.ImageResource;
 import org.treblereel.gwt.resources.api.client.Resource;
@@ -26,21 +29,7 @@ import org.treblereel.gwt.resources.api.client.Resource;
 @J2clTestInput(ImageResourceTest.class)
 public class ImageResourceTest {
 
-  @Resource
-  interface ExternalResources extends ClientBundle {
-
-    @Source("16x16.png")
-    ImageResource i16x16();
-
-    @Source("32x32.png")
-    ImageResource i32x32();
-
-    @Source("16x16.png")
-    ImageResource i16x16RepeatBoth();
-
-    @Source("32x32.png")
-    ImageResource i32x32RepeatBoth();
-  }
+  private final ImageResources imageResources = new ImageResourceTest_ImageResourcesImpl();
 
   @Resource
   interface ImageResources extends ClientBundle {
@@ -68,12 +57,6 @@ public class ImageResourceTest {
     @Source("64x64-dup.png")
     ImageResource i64x64Dup2();
 
-    // Test default filename lookup while we're at it
-    // ImageResource largeLossless();
-
-    // Test default filename lookup while we're at it
-    // ImageResource largeLossy();
-
     @Source("64x64.png")
     @ImageOptions(width = 32)
     ImageResource scaledDown();
@@ -81,8 +64,29 @@ public class ImageResourceTest {
     @Source("64x64.png")
     @ImageOptions(width = 128)
     ImageResource scaledUp();
+  }
 
-    // @Source("logo.png")
-    // ImageResource linuxLogo();
+  @Test
+  public void testAnimated() {
+    assertNotNull(imageResources);
+    assertEquals("animated", imageResources.animated().getName());
+    assertEquals(16, imageResources.animated().getHeight());
+    assertEquals(16, imageResources.animated().getWidth());
+  }
+
+  @Test
+  public void testScaledDown() {
+    assertNotNull(imageResources);
+    assertEquals("scaledDown", imageResources.scaledDown().getName());
+    assertEquals(32, imageResources.scaledDown().getHeight());
+    assertEquals(32, imageResources.scaledDown().getWidth());
+  }
+
+  @Test
+  public void testScaledUp() {
+    assertNotNull(imageResources);
+    assertEquals("scaledUp", imageResources.scaledUp().getName());
+    assertEquals(128, imageResources.scaledUp().getHeight());
+    assertEquals(128, imageResources.scaledUp().getWidth());
   }
 }

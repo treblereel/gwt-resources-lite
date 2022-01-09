@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <artifactId>resources-test-parent</artifactId>
+        <groupId>org.treblereel.gwt.resources.test</groupId>
+        <version>dev</version>
+    </parent>
+
+    <artifactId>gwt2</artifactId>
+    <description>GWT2 tests</description>
+    <packaging>gwt-lib</packaging>
+
+    <developers>
+        <developer>
+            <id>treblereel</id>
+            <name>Dmitrii Tikhomirov</name>
+            <email>chani.liet@gmail.com</email>
+        </developer>
+    </developers>
+
+    <properties>
+        <maven.deploy.skip>true</maven.deploy.skip>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.treblereel.gwt.resources</groupId>
+            <artifactId>resources-api</artifactId>
+            <version>${revision}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.gwt</groupId>
+            <artifactId>gwt-user</artifactId>
+            <version>2.9.0</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.google.gwt</groupId>
+            <artifactId>gwt-dev</artifactId>
+            <version>2.9.0</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+            </resource>
+        </resources>
+        <testResources>
+            <testResource>
+                <directory>${project.basedir}/src/test/java</directory>
+            </testResource>
+            <testResource>
+                <directory>${project.basedir}/src/test/resources</directory>
+            </testResource>
+        </testResources>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven.compiler.version}</version>
+                <configuration>
+                    <source>${maven.compiler.source}</source>
+                    <target>${maven.compiler.target}</target>
+                    <annotationProcessorPaths>
+                        <path>
+                            <groupId>org.treblereel.gwt.resources</groupId>
+                            <artifactId>resources-processor</artifactId>
+                            <version>${revision}</version>
+                        </path>
+                    </annotationProcessorPaths>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>net.ltgt.gwt.maven</groupId>
+                <artifactId>gwt-maven-plugin</artifactId>
+                <version>1.0.0</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <failOnError>true</failOnError>
+                    <moduleName>org.treblereel.gwt.resources.ResourcesGwt2Test</moduleName>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
