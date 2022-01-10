@@ -9,6 +9,9 @@
   <version>dev</version>
   <packaging>pom</packaging>
 
+  <name>gwt resources lite parent</name>
+  <description>It's a parent for gwt resources lite modules</description>
+  <url>https://github.com/treblereel/gwt-resources-lite</url>
 
   <licenses>
     <license>
@@ -25,11 +28,22 @@
     </developer>
   </developers>
 
+  <organization>
+    <name>Treblereel</name>
+    <url>https://github.com/treblereel</url>
+  </organization>
+  <scm>
+    <url>https://github.com/treblereel/gwt-resources-lite</url>
+    <connection>scm:git:git://github.com/treblereel/gwt-resources-lite.git</connection>
+    <developerConnection>scm:git:git@github.com:treblereel/gwt-resources-lite.git</developerConnection>
+    <tag>0.1</tag>
+  </scm>
+
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.build.outputEncoding>UTF-8</project.build.outputEncoding>
 
-    <revision>0.2-SNAPSHOT</revision>
+    <revision>0.2</revision>
 
     <maven.licence.plugin>3.0</maven.licence.plugin>
     <maven.shade.plugin>3.2.4</maven.shade.plugin>
