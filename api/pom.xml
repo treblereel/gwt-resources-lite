@@ -12,6 +12,8 @@
 
     <artifactId>resources-api</artifactId>
     <description>Client api for gwt-resources-lite</description>
+    <name>Client api for gwt-resources-lite</name>
+
     <url>https://github.com/treblereel</url>
     <version>${revision}</version>
     <packaging>jar</packaging>
@@ -80,6 +82,22 @@
                 <configuration>
                     <skip>false</skip>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>${maven.javadoc.plugin}</version>
+                <configuration>
+                    <failOnError>false</failOnError>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
